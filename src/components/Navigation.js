@@ -4,6 +4,13 @@ import { AppBar, Toolbar, IconButton, Typography } from "@mui/material";
 import cookie from "cookie";
 import MenuIcon from "@mui/icons-material/Menu";
 
+var loggedState = ""
+
+const changeNavText = () => {const cookies = cookie.parse(document.cookie);
+if  (cookies["loggedIn"] === "true") {loggedState = "Log Out"
+} else {loggedState = "Log In"}
+}
+
 const Navigation = () => {
   const navigate = useNavigate();
 
@@ -32,7 +39,8 @@ const Navigation = () => {
               navigate("/login");
             }}
           >
-            Logout
+            {changeNavText()}
+            {loggedState}
           </li>
         </ul>
       </Toolbar>
